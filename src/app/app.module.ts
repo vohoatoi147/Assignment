@@ -1,6 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {RouterModule} from '@angular/router';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {HttpClientModule} from '@angular/common/http';
+import {ServiceService} from './service.service';
+import {FormsModule} from '@angular/forms';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +19,9 @@ import { LienheComponent } from './lienhe/lienhe.component';
 import { HoidapComponent } from './hoidap/hoidap.component';
 import { GopyComponent } from './gopy/gopy.component';
 import { QuenmatkhauComponent } from './quenmatkhau/quenmatkhau.component';
+import { ThitracnghiemComponent } from './thitracnghiem/thitracnghiem.component';
+import { from } from 'rxjs';
+
 
 @NgModule({
   declarations: [
@@ -29,10 +36,15 @@ import { QuenmatkhauComponent } from './quenmatkhau/quenmatkhau.component';
     HoidapComponent,
     GopyComponent,
     QuenmatkhauComponent,
+    ThitracnghiemComponent,
+    
   ],
   imports: [
     BrowserModule,
+    NgxPaginationModule,
     AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
     RouterModule.forRoot([
 
 { path: "",
@@ -48,12 +60,17 @@ component: TrangchuComponent },
 { path: 'hoidap', component: HoidapComponent },
 { path: 'lienhe', component: LienheComponent },
 { path: 'gopy', component: GopyComponent },
+{ path: 'quenmatkhau', component: QuenmatkhauComponent },
+{ path: 'monhoc/:mId', component: ThitracnghiemComponent },
+{ path: 'trangchu/:trangthi', component: ThitracnghiemComponent },
 
 { path: '**', redirectTo: 'products', pathMatch: 'full' },
 
 ])
   ],
-  providers: [],
+  providers: [
+    ServiceService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

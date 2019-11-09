@@ -1,0 +1,63 @@
+<div class="">
+    <div class="mx-5 mb-5">
+        <br />
+        <div style="background: cyan;height:120px; "> <br />
+            <h3>Môn thi :&nbsp;<i style="color: lightseagreen;">{{subName}}</i></h3>
+            <span class="bg-black  " id="timer"><b>Thời gian làm bài &nbsp;
+
+                </b> &nbsp;<b style="color: red;"> 45':00</b></span><i class="far fa-alarm-clock"></i>
+            <span *ngIf="showTime" class="show fade ml-4">
+                <button type="button" class="btn txtshadow btn-sm btn-primary" (click)="startTime()">
+                    BẮT ĐẦU
+                </button>
+            </span>
+        </div>
+        <BR />
+        <div class="card" style="width: 100%;"
+            *ngFor="let a of  socau | paginate: { itemsPerPage: item, currentPage: trangdau }">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" style="background-image: url(./assets/phong2.jpg)">
+                    <h3>{{a.Text}}</h3>
+                </li>
+                <div *ngFor="let x of a.Answers">
+                    &nbsp;<input type="radio" value="{{x.Id}}" [(ngModel)]="answer[trangdau-1]">{{x.Text}}
+                </div>
+
+                <li class="list-group-item" style="background-image: url(./assets/phong2.jpg)">
+                    <b>Câu hỏi số</b>&nbsp;{{trangdau}}/{{socauhoi}}
+                </li>
+            </ul><br />
+            <div class="nut" style="height: 70px;">
+                <button type="button" class="btn " (click)="goPre()"><i
+                        class="far fa-arrow-alt-circle-left fa-2x"></i></button>
+                <button type="button" class="btn " (click)="goNext()"><i
+                        class="far fa-arrow-alt-circle-right fa-2x"></i></button>
+                <button type="button" class="btn btn-primary" (click)="tinhDiem()"
+                    style="float: right;margin-right: 20px;" (click)="endTime()">Nộp bài</button>
+            </div>
+        </div>
+        <div id="result" class="col-md-9 mt-5" style="display: none;">
+            <table class="table table-striped bgr table-responsive-sm text-primary table-bordered text-center">
+                <thead class="table-success h5">
+                    <tr>
+                        <th scope="col">Môn Thi</th>
+                        <th scope="col">Điểm Thi</th>
+                        <th scope="col">Thời Gian Làm Bài</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="text-black h5">
+                        <td  class="align-middle">{{subName}}</td>
+
+                        <td class="align-middle">{{Marks}}</td>
+                        <td id="timer-2" class="align-middle"></td>
+                    </tr>
+                </tbody>
+            </table><br />
+            <button type="button" class="btn btn-primary" [routerLink]="['/trangchu']">Bấm để làm bài thi môn khác
+            </button>
+        </div><br />
+    </div>
+
+
+</div>

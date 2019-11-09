@@ -1,15 +1,21 @@
 <br />
-<h5 style="text-align: center; color: darkgreen;font-weight: bold;">THÔNG TIN CHUNG</h5>
-<div >
-  <form action="/action_page.php" class="was-validated">
-    <div class="form-group">
-      <label for="uname">chưa làm bài trắc nghiệm</label>
-      <input type="text" class="form-control" id="uname" placeholder="alo" name="uname"  ><br />
-      <input type="date" class="form-control" id="uname" placeholder="" name="uname"  ><br />
-      <input type="number" class="form-control" id="uname" placeholder="076453874" name="uname" ><br />
-      <input type="date" class="form-control" id="uname" placeholder="địa chỉ" name="uname"  ><br />
-      <input type="date" class="form-control" id="uname" placeholder="Tài khoản Facebook" name="uname"  >
-    </div>
-    <button type="submit" class="btn btn-success" style="width: 200px;">CẬP NHẬT</button>
-  </form>
-</div>
+<h3 style="text-align: center;color: brown;">Thông tin tài khoản</h3>
+<form #formdangki="ngForm" (ngSubmit)="submit(formdangki)">
+  <div class="form-group">
+    <label style="color:   deepskyblue;">Username :</label><input type="text" readonly class="form-control"
+      [(ngModel)]='user.username' name="username" required><br />
+    <label style="color:  deepskyblue;">Gới tính :</label>
+      <input type="radio" [(ngModel)]='user.gender' name="gender" value="true">Nam
+      <input type="radio" [(ngModel)]='user.gender' name="gender" value="false">Nữ <br />
+      <label style="color:  deepskyblue;">Email :</label>
+      <input type="text" class="form-control" [(ngModel)]='user.email' name="email" required>
+  </div>
+  <div class="form-group">
+    <label style="color:  deepskyblue;">Full Name :</label>
+    <input type="text" class="form-control" [(ngModel)]='user.fullname' placeholder="Họ Tên" name="fullname" required>
+    <label style="color:  deepskyblue;">Birthday :</label>
+    <input type="date" class="form-control" [(ngModel)]='user.birthday' placeholder="Ngày sinh" name="birthday"
+      required>
+  </div>
+  <button class="btn btn-success" (click)="sua()" style="width: 200px;">Cập nhật</button>
+</form>

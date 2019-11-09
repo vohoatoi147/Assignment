@@ -1,16 +1,19 @@
-<section class="panel panel-default">
-    <div class="panel-body">
-        <h3 class="heading m-t-0"><i class="fa fa-key"></i>Lấy lại mật khẩu</h3>
-        <div class="heading-line"></div>
-                                    <div id=""></div>
-                                    <div style="padding-top:20px;"></div>
+<br />
+<h3 style="text-align: center;color: brown;">Nhập UserName và Email để nhận lại mật khẩu</h3>
+<form #formdangki="ngForm" (ngSubmit)="submit(formdangki)">
+    <div class="form-group">
+        <label style="color:  deepskyblue;">Username :</label><input type="text" class="form-control"
+            [(ngModel)]='username' name="username" required>
+        
+        <label style="color:  deepskyblue;">Email :</label><input type="text" class="form-control"
+            [(ngModel)]='email' name="email" required>
+    </div>
+    <div class="form-inline"*ngIf="submit">
+        <input type="text" *ngFor="let a of user" class="form-control" style="width: 100%;" [(ngModel)]='a.password' placeholder="Password"
+            name="password" required>
+    </div>
+    <div class="form-group form-check">
+    </div>
 
-            <div id="form-group">
-                <input type="text" name="register_user_tel" id="register_user_tel" class="form-control" value="" placeholder="Nhập Email của bạn để lấy lại mật khẩu"/>
-            </div>
-            <br />
-            <div id="form-group" onclick="$(this).hide(); $('#loading').show();">
-                <button class="btn btn-primary" type="submit" value="" name="submit" >Gửi</button>
-            </div>
-                            </div>
-</section>
+    <button class="btn btn-success" (click)="quenMatKhau()" style="width: 200px;">Bấm để lấy mật khẩu</button>
+</form>

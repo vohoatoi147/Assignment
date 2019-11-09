@@ -1,15 +1,13 @@
 <br />
-<h5 style="text-align: center; color: darkgreen;font-weight: bold;">ĐĂNG KÍ TÀI KHOẢN</h5>
-<div style="text-align: center">
-<p>Để có những bài thi tuyệt vời của <code>Học là giỏi</code> </p>
-  <form action="/action_page.php" class="was-validated">
-    <div class="form-group">
-            <input type="password" class="form-control" id="pwd" placeholder="Mật khẩu cũ" name="pswd" required ><br />
-            <input type="password" class="form-control" id="pwd" placeholder="Mật khẩu mới" name="pswd" required ><br />
-            <input type="password" class="form-control" id="pwd" placeholder="Nhập lại mật khẩu" name="pswd" required >
-    </div>
-    
-    
-    <button type="submit" class="btn btn-success" style="width: 200px;">Đăng Kí</button>
-  </form>
-</div>
+<h3 style="text-align: center;color: brown;">Vui lòng nhập mật khẩu mới của bạn</h3>
+<form #formdangki="ngForm" (ngSubmit)="submit(formdangki)">
+ 
+  <div class="form-inline">
+    <input type="text" class="form-control" style="width: 100%;" [(ngModel)]='user.password' placeholder="Password" name="password"
+      required>
+  </div>
+  <div class="form-group form-check">
+  </div>
+ 
+  <button class="btn btn-success" (click)="sua()" style="width: 200px;">Cập nhật</button>
+</form>

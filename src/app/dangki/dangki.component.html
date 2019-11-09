@@ -1,18 +1,63 @@
-<br />
-<h5 style="text-align: center; color: darkgreen;font-weight: bold;">ĐĂNG KÍ TÀI KHOẢN</h5>
-<div style="text-align: center">
-<p>Để có những bài thi tuyệt vời của <code>Học là giỏi</code> </p>
-  <form action="/action_page.php" class="was-validated">
-    <div class="form-group">
-      <input type="text" class="form-control" id="uname" placeholder="Email của bạn" name="uname" required > <br />
-      <input type="number" class="form-control" id="uname" placeholder=" Số điện thoại của bạn" name="uname" required > 
-    </div>
-    <div class="form-inline">
-      <input type="password" class="form-control" id="pwd" placeholder="Password" name="pswd" required style="width: 395px;">
-      <input type="password" class="form-control" id="pwd" placeholder="Nhập lại Password" name="pswd" required style="width: 394px;margin-left:35px;">
-    </div>
-    <div class="form-group form-check">
-    </div>
-    <button type="submit" class="btn btn-success" style="width: 200px;">Đăng Kí</button>
-  </form>
+<div *ngIf="hidden">
+  <br />
+  <h5 style="text-align: center; color: darkgreen;font-weight: bold;">ĐĂNG KÍ TÀI KHOẢN</h5>
+  <div style="text-align: center">
+    <p>Để có những bài thi tuyệt vời của <code>Học là giỏi</code> </p>
+    <form #formdangki="ngForm" (ngSubmit)="submit(formdangki)">
+
+
+      <div class="form-group">
+        <input type="text" class="form-control" [(ngModel)]='formdk.username' placeholder="Tên đăng nhập"
+          name="username" required> <br />
+          <label >Giới tính : &nbsp;</label>
+        <input type="radio" [(ngModel)]='formdk.gender' name="gender" value="true">Nam
+        <input type="radio" [(ngModel)]='formdk.gender' name="gender" value="false">Nữ
+        <input type="text" class="form-control" [(ngModel)]='formdk.email' placeholder=" Nhập Email" name="email"
+          required>
+      </div>
+      <div class="form-inline">
+        <input type="password" class="form-control" [(ngModel)]='formdk.password' placeholder="Password" name="password"
+          required style="width: 395px;">
+        <input type="password" class="form-control" placeholder="Nhập lại Password" name="password" required
+          style="width: 394px;margin-left:35px;">
+      </div>
+      <div class="form-group form-check">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" [(ngModel)]='formdk.fullname' placeholder="Họ Tên" name="fullname"
+          required><br />
+        <input type="date" class="form-control" [(ngModel)]='formdk.birthday' placeholder="Ngày sinh" name="birthday"
+          required> <br />
+
+      </div>
+      <button type="submit" class="btn btn-success" style="width: 200px;">Đăng Kí</button>
+    </form>
+  </div>
+</div>
+
+<div *ngIf="!hidden">
+  <table class="table table-hover table-bodered">
+    <thead>
+      <tr>
+        <th>User Name</th>
+        <th>Password</th>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Gender</th>
+        <th>Birthday</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{formdk.username}}</td>
+        <td>{{formdk.password}}</td>
+        <td>{{formdk.fullname}}</td>
+        <td>{{formdk.email}}</td>
+        <td>{{formdk.gender}}</td>
+        <td>{{formdk.birthday}}</td>
+      </tr>
+    </tbody>
+  </table> 
+  <button type="button" [routerLink]="['/dangnhap']" routerLinkActive="router-link-active"  class="btn btn-primary">Đăng Nhập</button>
 </div>

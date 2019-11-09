@@ -1,3 +1,16 @@
-.hinh:hover{
-width: 100px;
+.hinh:hover {
+    width: 100px;
+}
+
+.card {
+    width: 300px;
+    height: 300px;
+    float: left;
+    margin-left: 65px;
+    margin-top: 20px;
+    ;
+}
+
+.nut {
+    clear: both;
 }
